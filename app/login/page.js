@@ -4,11 +4,19 @@ import { useState, useEffect } from "react";
 import { useSession, signIn, signOut, getProviders } from "next-auth/react";
 import Image from 'next/image';
 import { FcGoogle } from 'react-icons/fc';
+import { useRouter } from 'next/navigation';
 
 export default function LoginPage() {
   const { data: session } = useSession();
 
   const [providers, setProviders] = useState(null);
+
+  const handleSignIn = async (providerId) => {
+      await signIn(providerId);
+      if (isClient) {
+        router.push('/'); // Redirect to home page after sign-in, only on the client-side
+      }
+    };
 
   useEffect(() => {  //using it for signIn with getProviders
     const setUpProviders = async () => {
@@ -63,21 +71,17 @@ export default function LoginPage() {
             <div className="my-4 text-gray-500">or</div>
 
             {/* Social Login Buttons */}
-            <button
-              onClick={() => signIn("google")}
-             className="w-full flex items-center justify-center border py-3 rounded-lg hover:bg-gray-100 transition mb-3"
-                 >
-             <FcGoogle className="mr-2 text-xl" /> Sign in with Google
-             </button>
-            {/* {providers && Object.values(providers).map((provider) => (
-            <button
-            onClick={() => signIn(provider.id)} key={provider.name} type='button'
-              className="w-full flex items-center justify-center border py-3 rounded-lg hover:bg-gray-100 transition mb-3"
-            >
-              {provider.name === "Google" ? <FcGoogle className="mr-2 text-xl" /> : null}
-               Sign in with {provider.name}
-            </button>
-            ))} */}
+            
+             {!session?.user && providers && Object.values(providers).map((provider) => (
+                  <button
+                    key={provider.name}
+                    onClick={() => handleSignIn(provider.id)} // Call handleSignIn instead of signIn directly
+                    className="w-full flex items-center justify-center border py-3 rounded-lg hover:bg-gray-100 transition mb-3"
+                  >
+                    <FcGoogle className="mr-2 text-xl" /> Sign in with Google
+                  </button>
+                ))}
+            
           </>
         ) : (
           <button

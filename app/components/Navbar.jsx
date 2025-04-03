@@ -49,7 +49,7 @@ const Nav = () => {
   const handleSignIn = async (providerId) => {
     await signIn(providerId);
     if (isClient) {
-      router.push('/'); // Redirect to home page after sign-in, only on the client-side
+      router.push('/login'); // Redirect to home page after sign-in, only on the client-side
     }
   };
 
@@ -156,13 +156,8 @@ const Nav = () => {
                 )}
 
                 {/* Providers for Sign In */}
-                <Link
-                  href="/login"
-                  className="bg-rose-600 text-white px-6 py-2 rounded-full hover:bg-rose-700 transition-colors duration-200 font-medium"
-                >
-                  Sign In
-                </Link>
-                {/* {!session?.user && providers && Object.values(providers).map((provider) => (
+               
+                {!session?.user && providers && Object.values(providers).map((provider) => (
                   <button
                     key={provider.name}
                     onClick={() => handleSignIn(provider.id)} // Call handleSignIn instead of signIn directly
@@ -170,7 +165,7 @@ const Nav = () => {
                   >
                     Sign In
                   </button>
-                ))} */}
+                ))}
               </div>
             </div>
           </div>
@@ -240,13 +235,7 @@ const Nav = () => {
                   )}
 
                   {/* If not logged in, show sign-in options */}
-                  <Link
-                  href="/login"
-                  className="bg-rose-600 text-white px-6 py-2 rounded-full hover:bg-rose-700 transition-colors duration-200 font-medium"
-                >
-                  Sign In
-                </Link>
-                  {/* {!session?.user && providers && Object.values(providers).map((provider) => (
+                  {!session?.user && providers && Object.values(providers).map((provider) => (
                     <button
                       key={provider.name}
                       onClick={() => handleSignIn(provider.id)} // Call handleSignIn instead of signIn directly
@@ -254,7 +243,7 @@ const Nav = () => {
                     >
                       Sign In
                     </button>
-                  ))} */}
+                  ))}
                 </div>
               </motion.div>
             )}
