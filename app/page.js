@@ -1,103 +1,390 @@
-import Image from "next/image";
+'use client';
+
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <main className="min-h-screen bg-gradient-to-b from-rose-50 to-white">
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+      {/* Hero Section */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="text-center relative">
+          {/* Background Image */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            className="absolute inset-0 -z-10"
           >
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+              src="/bg2.jpg"
+              alt="Hero Background"
+              fill
+              className="rounded-xl object-cover"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            <div className="absolute inset-0 bg-black bg-opacity-50 rounded-xl"></div>
+          </motion.div>
+
+          <motion.h2
+            className="text-4xl font-bold gray-900 sm:text-5xl md:text-6xl"
+            initial={{ y: -20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8 }}
           >
-            Read our docs
-          </a>
+            Discover Your
+            <span className="text-rose-400"> Perfect Harmony</span>
+          </motion.h2>
+          <motion.p
+            className="mt-3 max-w-md mx-auto text-base text-gray-600 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl"
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+          >
+            Take our comprehensive relationship assessment to understand your personality dynamics
+            and receive tailored advice for a stronger partnership.
+          </motion.p>
+          <motion.div
+            className="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+          >
+            <div className="rounded-md shadow">
+              <Link
+                href="/assessment"
+                className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-rose-600 hover:bg-rose-700 md:py-4 md:text-lg md:px-10"
+              >
+                Start Assessment
+              </Link>
+            </div>
+            <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
+              <Link
+                href="/about"
+                className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-rose-600 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10"
+              >
+                Learn More
+              </Link>
+            </div>
+          </motion.div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-12 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            className="grid grid-cols-1 gap-8 md:grid-cols-3"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            viewport={{ once: true }}
+          >
+            {/* Feature 1 */}
+            <div className="text-center">
+              <div className="bg-rose-100 rounded-lg p-6 inline-block">
+                <svg
+                  className="h-8 w-8 text-rose-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                  />
+                </svg>
+              </div>
+              <h3 className="mt-4 text-lg font-medium text-gray-900">MBTI Personality Types</h3>
+              <p className="mt-2 text-base text-gray-500">
+                Understand how different personality types interact in relationships.
+              </p>
+            </div>
+
+            {/* Feature 2 */}
+            <div className="text-center">
+              <div className="bg-rose-100 rounded-lg p-6 inline-block">
+                <svg
+                  className="h-8 w-8 text-rose-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+                  />
+                </svg>
+              </div>
+              <h3 className="mt-4 text-lg font-medium text-gray-900">Love Languages</h3>
+              <p className="mt-2 text-base text-gray-500">
+                Discover how you and your partner express and receive love.
+              </p>
+            </div>
+
+            {/* Feature 3 */}
+            <div className="text-center">
+              <div className="bg-rose-100 rounded-lg p-6 inline-block">
+                <svg
+                  className="h-8 w-8 text-rose-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </div>
+              <h3 className="mt-4 text-lg font-medium text-gray-900">Big 5 Personality Traits</h3>
+              <p className="mt-2 text-base text-gray-500">
+                Explore the core dimensions of your personality.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <h3 className='text-xl font-bold text-left p-9'>Testimonials</h3>
+      <section className="py-16 bg-rose-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row gap-8 items-center">
+          
+          {/* Image Section */}
+          <motion.div
+            className="w-full md:w-1/2"
+            initial={{ x: -50, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <Image
+              src="/r3.jpg"
+              alt="Couple laughing together"
+              width={600}
+              height={400}
+              className="rounded-2xl object-cover shadow-lg"
+            />
+          </motion.div>
+
+          {/* Testimonials Section */}
+          <motion.div
+            className="w-full md:w-1/2 space-y-6"
+            initial={{ x: 50, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <div className="bg-white p-6 rounded-xl shadow-lg flex items-center space-x-4">
+              
+              <Image
+                src="/r4.jpg"
+                alt="User 1"
+                width={60}
+                height={60}
+                className="rounded-full"
+              />
+              <div>
+                <p className="text-gray-700 italic">“This assessment helped us understand each other on a whole new level!”</p>
+                <p className="text-sm text-gray-500 mt-1">— Alex & Jamie</p>
+              </div>
+            </div>
+
+            <div className="bg-white p-6 rounded-xl shadow-lg flex items-center space-x-4">
+              <Image
+                src="/r4.jpg"
+                alt="User 2"
+                width={60}
+                height={60}
+                className="rounded-full"
+              />
+              <div>
+                <p className="text-gray-700 italic">“The insights we gained were eye-opening. Totally worth it.”</p>
+                <p className="text-sm text-gray-500 mt-1">— Taylor M.</p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+    </main>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 'use client';
+
+// import Link from 'next/link';
+// import { motion } from 'framer-motion';
+// import Image from 'next/image';
+
+// export default function Home() {
+//   return (
+//     <main className="min-h-screen bg-gradient-to-b from-rose-50 to-white">
+//       {/* Hero Section */}
+//       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+//         <div className="text-center relative">
+//           {/* Background Image */}
+//           <motion.div
+//             initial={{ opacity: 0 }}
+//             animate={{ opacity: 1 }}
+//             transition={{ duration: 1 }}
+//             className="absolute inset-0 -z-10"
+//           > 
+//             <Image
+//               src="/bg2.jpg"
+//               alt="Hero Background"
+//               layout="fill"
+//               objectFit="cover"
+//               className="rounded-xl"
+//             />
+//             <div className="absolute inset-0 bg-black bg-opacity-50 rounded-xl"></div>
+//           </motion.div>
+
+//           <motion.h2
+//             className="text-4xl font-bold gray-900 sm:text-5xl md:text-6xl"
+//             initial={{ y: -20, opacity: 0 }}
+//             animate={{ y: 0, opacity: 1 }}
+//             transition={{ duration: 0.8 }}
+//           >
+//             Discover Your
+//             <span className="text-rose-400"> Perfect Harmony</span>
+//           </motion.h2>
+//           <motion.p
+//             className="mt-3 max-w-md mx-auto text-base text-gray-600 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl"
+//             initial={{ y: 20, opacity: 0 }}
+//             animate={{ y: 0, opacity: 1 }}
+//             transition={{ delay: 0.4, duration: 0.8 }}
+//           >
+//             Take our comprehensive relationship assessment to understand your personality dynamics
+//             and receive tailored advice for a stronger partnership.
+//           </motion.p>
+//           <motion.div
+//             className="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8"
+//             initial={{ opacity: 0 }}
+//             animate={{ opacity: 1 }}
+//             transition={{ delay: 0.6, duration: 0.8 }}
+//           >
+//             <div className="rounded-md shadow">
+//               <Link
+//                 href="/assessment"
+//                 className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-rose-600 hover:bg-rose-700 md:py-4 md:text-lg md:px-10"
+//               >
+//                 Start Assessment
+//               </Link>
+//             </div>
+//             <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
+//               <Link
+//                 href="/about"
+//                 className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-rose-600 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10"
+//               >
+//                 Learn More
+//               </Link>
+//             </div>
+//           </motion.div>
+//         </div>
+//       </section>
+
+//       {/* Features Section */}
+//       <section className="py-12 bg-white">
+//         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+//           <motion.div
+//             className="grid grid-cols-1 gap-8 md:grid-cols-3"
+//             initial={{ opacity: 0 }}
+//             whileInView={{ opacity: 1 }}
+//             transition={{ duration: 1 }}
+//             viewport={{ once: true }}
+//           >
+//             {/* Feature 1 */}
+//             <div className="text-center">
+//               <div className="bg-rose-100 rounded-lg p-6 inline-block">
+//                 <svg
+//                   className="h-8 w-8 text-rose-600"
+//                   fill="none"
+//                   stroke="currentColor"
+//                   viewBox="0 0 24 24"
+//                 >
+//                   <path
+//                     strokeLinecap="round"
+//                     strokeLinejoin="round"
+//                     strokeWidth={2}
+//                     d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+//                   />
+//                 </svg>
+//               </div>
+//               <h3 className="mt-4 text-lg font-medium text-gray-900">MBTI Personality Types</h3>
+//               <p className="mt-2 text-base text-gray-500">
+//                 Understand how different personality types interact in relationships.
+//               </p>
+//             </div>
+
+//             {/* Feature 2 */}
+//             <div className="text-center">
+//               <div className="bg-rose-100 rounded-lg p-6 inline-block">
+//                 <svg
+//                   className="h-8 w-8 text-rose-600"
+//                   fill="none"
+//                   stroke="currentColor"
+//                   viewBox="0 0 24 24"
+//                 >
+//                   <path
+//                     strokeLinecap="round"
+//                     strokeLinejoin="round"
+//                     strokeWidth={2}
+//                     d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+//                   />
+//                 </svg>
+//               </div>
+//               <h3 className="mt-4 text-lg font-medium text-gray-900">Love Languages</h3>
+//               <p className="mt-2 text-base text-gray-500">
+//                 Discover how you and your partner express and receive love.
+//               </p>
+//             </div>
+
+//             {/* Feature 3 */}
+//             <div className="text-center">
+//               <div className="bg-rose-100 rounded-lg p-6 inline-block">
+//                 <svg
+//                   className="h-8 w-8 text-rose-600"
+//                   fill="none"
+//                   stroke="currentColor"
+//                   viewBox="0 0 24 24"
+//                 >
+//                   <path
+//                     strokeLinecap="round"
+//                     strokeLinejoin="round"
+//                     strokeWidth={2}
+//                     d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+//                   />
+//                 </svg>
+//               </div>
+//               <h3 className="mt-4 text-lg font-medium text-gray-900">Big 5 Personality Traits</h3>
+//               <p className="mt-2 text-base text-gray-500">
+//                 Explore the core dimensions of your personality.
+//               </p>
+//             </div>
+//           </motion.div>
+//         </div>
+//       </section>
+//     </main>
+//   );
+// }
+
