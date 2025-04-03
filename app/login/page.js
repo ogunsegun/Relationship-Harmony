@@ -85,7 +85,7 @@ export default function LoginPage() {
           </>
         ) : (
           <button
-            onClick={() => signOut()}
+            onClick={() => signOut({ callbackUrl: "/" })}
             className="bg-red-500 text-white px-6 py-2 rounded-full hover:bg-red-600 transition-colors duration-200 font-medium"
           >
             Logout

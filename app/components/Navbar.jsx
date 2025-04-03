@@ -45,13 +45,16 @@ const Nav = () => {
   const navbarClasses = `fixed w-full top-0 z-50 transition-all duration-300 ${
     isScrolled ? "bg-white/95 backdrop-blur-sm shadow-md" : "bg-white/50 backdrop-blur-sm"
   }`;
-
-  const handleSignIn = async (providerId) => {
-    await signIn(providerId);
-    if (isClient) {
-      router.push('/login'); // Redirect to home page after sign-in, only on the client-side
-    }
+  
+  const handleSignIn = () => {
+    router.push('/login'); // Redirect to the custom login page
   };
+  // const handleSignIn = async (providerId) => {
+  //   await signIn(providerId);
+  //   if (isClient) {
+  //     router.push('/login'); // Redirect to home page after sign-in, only on the client-side
+  //   }
+  // };
 
   const menuItems = [
         { title: "About", href: "/about" },
@@ -226,7 +229,7 @@ const Nav = () => {
                 </AnimatePresence>
               </div>
                       <button
-                        onClick={() => signOut()}
+                        onClick={() => signOut({ callbackUrl: "/" })}
                         className="bg-gray-700 text-white px-6 py-2 rounded-full hover:bg-gray-800 transition-colors duration-200 font-medium"
                       >
                         Sign Out
